@@ -1,9 +1,12 @@
 // connects to our database and exports a supabase object
 
-import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+// FYI This setup is NOT production ready, just for demonstration purposes!
+// DO NOT expose keys in your html or javascript files
 
-const SUPABASE_URL = "https://uhfnmbpflwliruspgeob.supabase.co";
+import { createClient } from "https://esm.sh/@supabase/supabase-js";
+import { config } from "./config.js";
 
-const SUPABASE_ANON_KEY = "sb_publishable_QHn5Uq-QgUFn1s1vFA2eeg_PyyQLH24";
-
-export const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+export const supabase = createClient(
+    config.supabaseUrl,
+    config.supabaseKey
+);
