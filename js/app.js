@@ -1,17 +1,15 @@
 import { supabase } from "./connection.js";
-
-const params = new URLSearchParams(window.location.search);
-const postIndex = params.get("id") || 0;
+import { params } from "./params.js"
 
 console.log(supabase);
-console.log(postIndex);
+console.log(params);
 
 
 async function loadPosts() {
     const result = await supabase
         .from("posts")
         .select("*")
-        .eq("id", postIndex)
+        .eq("id", params.id)
         .single();
 
     console.log(result.data);
